@@ -1,25 +1,68 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Search from "./components/Search";
+import User from "./components/User";
+import { connect } from "react-redux";
+import {
+  setInput,
+  getUser,
+  getRepos,
+  showList,
+  resetUser,
+  resetRepos,
+} from "./redux/actions";
+import PropTypes from "prop-types";
+import "./style/style.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div>
+        {!this.props.list ? (
+          <Search
+            input={this.props.input}
+            setInput={this.props.setInput}
+            getUser={this.props.getUser}
+            getRepos={this.props.getRepos}
+            showList={this.props.showList}
+          />
+        ) : (
+          <User
+            user={this.props.user}
+            repos={this.props.repos}
+            showList={this.props.showList}
+            resetUser={this.props.resetUser}
+            resetRepos={this.props.resetRepos}
+            setInput={this.props.setInput}
+          />
+        )}
+      </div>
+    );
+  }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    input: state.input,
+    user: state.user,
+    repos: state.repos,
+    list: state.list,
+  };
+}
+
+const mapDispatchToProps = {
+  setInput,
+  getUser,
+  getRepos,
+  showList,
+  resetUser,
+  resetRepos,
+};
+
+App.propTypes = {
+  input: PropTypes.string,
+  user: PropTypes.object,
+  repos: PropTypes.array,
+  list: PropTypes.bool,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
