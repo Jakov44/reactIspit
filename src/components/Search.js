@@ -3,9 +3,13 @@ import React from "react";
 const Search = ({ input, setInput, getUser, getRepos, showList }) => {
   const onClickHandler = (event) => {
     event.preventDefault();
-    getUser(input);
-    getRepos(input);
-    showList();
+    if (input.length > 0) {
+      getUser(input);
+      getRepos(input);
+      showList();
+    } else {
+      alert("Please enter a valid search term");
+    }
   };
   return (
     <div className="searchCard">

@@ -11,6 +11,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgba(250, 193, 36, 0.966);
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .searchCard {
@@ -30,8 +39,6 @@ body {
   row-gap: 40px;
   height: 400px;
   width: 600px;
-  border: 1px solid black;
-  border-radius: 20px;
 }
 
 .search label {
@@ -41,7 +48,7 @@ body {
 .search input {
   width: 200px;
   height: 30px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .search button {
@@ -50,12 +57,15 @@ body {
   border-radius: 5px;
   border: 1px solid black;
   background-color: rgba(250, 193, 36, 0.966);
+  font-size: 18px;
+}
+.search button:active {
+  transform: scale(0.98);
 }
 
 .container {
   height: 100%;
   width: 100%;
-  border: 1px solid black;
   padding: 30px;
 }
 
@@ -79,7 +89,6 @@ body {
 .list li {
   font-size: 20px;
   padding: 5px;
-  border: 1px solid rgb(224, 224, 224);
 }
 
 .naslov {
@@ -91,7 +100,29 @@ body {
   margin: 10px;
   width: 100px;
   height: 30px;
-  background-color: rgb(158, 255, 255);
+  background-color: rgba(250, 193, 36, 0.966);
   border: 1px solid black;
   border-radius: 5px;
+}
+
+.main-container {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 20px;
+  box-shadow: 9px 8px 10px -4px rgba(0, 0, 0, 0.71);
+}
+
+.user {
+  padding: 2%;
+}
+
+@media only screen and (max-height: 820px) {
+  .user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 3%;
+  }
 }

@@ -16,8 +16,8 @@ import "./style/style.css";
 class App extends Component {
   render() {
     return (
-      <div>
-        {!this.props.list ? (
+      <div className="main-container">
+        {!this.props.user ? (
           <Search
             input={this.props.input}
             setInput={this.props.setInput}
